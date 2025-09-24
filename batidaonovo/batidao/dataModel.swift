@@ -36,7 +36,7 @@ extension Array where Element == Questoes{
             
             Questoes(
                 musica: "instrumental.rockdoido",
-                capaDoAlbum: "doceMel",
+                capaDoAlbum: "rockdoido",
                 certa: "para",
                 estiloMusica: "Rock Doido",
                 opcoes: ["para", "amazonas", "goias", "santa catarina"]

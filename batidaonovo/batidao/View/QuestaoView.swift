@@ -14,9 +14,11 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct QuestaoView: View {
     
+    @State private var audioPlayer: AVAudioPlayer?
     @State private var opcaoSelecionada: String? = nil // nil = nenhuma opção escolhida
     @State var questao: Questoes
     @Binding var proximo: Int
@@ -176,6 +178,12 @@ struct QuestaoView: View {
                 }
             }
         }
+        .onAppear {
+            tocaMusica(named: questao.musica)
+        }
+        .onDisappear(){
+            paraMusica(named: questao.musica)
+        }
     }
     
     func corOpcao( opcao: String)-> Color{
@@ -216,6 +224,34 @@ struct QuestaoView: View {
             
         }
         return .black
+    }
+    
+    func tocaMusica(named name: String){
+        if let url = Bundle.main.url(forResource: name, withExtension: "mp3"){
+            do{
+                audioPlayer = try AVAudioPlayer(contentsOf: url)
+                audioPlayer?.play()
+            } catch {
+                print ("Erro ao tocar música \(name): \(error.localizedDescription)")
+            }
+            
+        } else {
+            print("Arquivo de música não encontrado: \(name)")
+        }
+        
+    }
+    func paraMusica(named name: String){
+        if let url = Bundle.main.url(forResource: name, withExtension: "mp3"){
+            do{
+                audioPlayer = try AVAudioPlayer(contentsOf: url)
+                audioPlayer?.stop()
+            } catch {
+                print ("Erro ao tocar música \(name): \(error.localizedDescription)")
+            }
+            
+        } else {
+            print("Arquivo de música não encontrado: \(name)")
+        }
     }
     
 }
