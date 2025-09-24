@@ -76,10 +76,13 @@ struct QuestaoView: View {
                                 .resizable()
                                 .scaledToFit()
                             
-                            Text(questao.opcoes[0])
+                            Text(textoOpcao(opcao: questao.opcoes[0]))
                                 .font(.custom("Brasilero2018Free-Regular", size: 24))
-                                .foregroundStyle(.black)
+                                .foregroundStyle(textoCor(opcao: questao.opcoes[0]))
                                 .multilineTextAlignment(.center)
+                            //                            Text(questao.opcoes[0])
+                            
+                            //
                             
                         }
                         .padding()
@@ -103,9 +106,9 @@ struct QuestaoView: View {
                                 .resizable()
                                 .scaledToFit()
                             
-                            Text(questao.opcoes[1])
+                            Text(textoOpcao(opcao: questao.opcoes[1]))
                                 .font(.custom("Brasilero2018Free-Regular", size: 24))
-                                .foregroundStyle(.black)
+                                .foregroundStyle(textoCor(opcao: questao.opcoes[1]))
                                 .multilineTextAlignment(.center)
                             
                         }
@@ -133,9 +136,9 @@ struct QuestaoView: View {
                                 .resizable()
                                 .scaledToFit()
                             
-                            Text(questao.opcoes[2])
+                            Text(textoOpcao(opcao: questao.opcoes[2]))
                                 .font(.custom("Brasilero2018Free-Regular", size: 24))
-                                .foregroundStyle(.black)
+                                .foregroundStyle(textoCor(opcao: questao.opcoes[2]))
                                 .multilineTextAlignment(.center)
                             
                         }
@@ -159,9 +162,9 @@ struct QuestaoView: View {
                                 .resizable()
                                 .scaledToFit()
                             
-                            Text(questao.opcoes[3])
+                            Text(textoOpcao(opcao: questao.opcoes[3]))
                                 .font(.custom("Brasilero2018Free-Regular", size: 24))
-                                .foregroundStyle(.black)
+                                .foregroundStyle(textoCor(opcao: questao.opcoes[3]))
                                 .multilineTextAlignment(.center)
                             
                         }
@@ -172,9 +175,6 @@ struct QuestaoView: View {
                     }
                 }
             }
-        }
-        .onAppear(){
-            print("oi")
         }
     }
     
@@ -192,15 +192,30 @@ struct QuestaoView: View {
         
         return .amareloClaro
     }
+    
+    func textoOpcao( opcao: String) -> String{
+        guard opcaoSelecionada != nil else{
+            return opcao.uppercased()
+        }
+        
+        if opcao == questao.certa{
+            return questao.estiloMusica.uppercased()
+        }
+        return opcao.uppercased()
+        
+    }
+    
+    func textoCor( opcao: String) -> Color{
+        guard let selecionada = opcaoSelecionada else{
+            return .black
+            
+        }
+        
+        if opcao == selecionada && opcao != questao.certa {
+            return .white
+            
+        }
+        return .black
+    }
+    
 }
-
-//#Preview {
-//    QuestaoView(questao:Questoes(
-//        musica: "instrumental.funkbruxaria",
-//        capaDoAlbum: "bruxaria",
-//        certa: "sao paulo",
-//        estiloMusica: "Funk Bruxaria",
-//        opcoes: ["sao paulo", "rio de janeiro", "minas gerais", "pernambuco"]
-//    ))
-//}
-//
