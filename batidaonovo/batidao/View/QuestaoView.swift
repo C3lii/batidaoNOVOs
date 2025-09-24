@@ -17,8 +17,10 @@ import SwiftUI
 
 struct QuestaoView: View {
     
+    @State private var opcaoSelecionada: String? = nil // nil = nenhuma opção escolhida
     @State var questao: Questoes
     @Binding var proximo: Int
+    // random
     var body: some View {
         
         ZStack{
@@ -54,13 +56,19 @@ struct QuestaoView: View {
                 HStack{
                     
                     Button{
-                        if questao.opcoes[0] == questao.certa {
-                            
-                        }
+                        
+                        opcaoSelecionada = questao.opcoes[0]//salva opcao clicada
+                        
                         Task{
-                            try? await Task.sleep(nanoseconds: 2500000000)
+                            try? await Task.sleep(nanoseconds: 2000000000)
                             proximo += 1
+                            opcaoSelecionada = nil
                         }
+                        
+                        //                        if questao.opcoes[0] == questao.certa {
+                        //
+                        //                        }
+                        
                     } label: {
                         VStack{
                             
@@ -76,11 +84,18 @@ struct QuestaoView: View {
                         }
                         .padding()
                         .frame(width:165, height: 140)
-                        .background(.amareloClaro)
+                        .background(corOpcao(opcao: questao.opcoes[0]))
                         .cornerRadius(12)
                     }
                     Button{
-                        proximo += 1
+                        opcaoSelecionada = questao.opcoes[1]//salva opcao clicada
+                        
+                        Task{
+                            try? await Task.sleep(nanoseconds: 2000000000)
+                            proximo += 1
+                            opcaoSelecionada = nil
+                        }
+                        
                     } label: {
                         VStack{
                             
@@ -89,14 +104,14 @@ struct QuestaoView: View {
                                 .scaledToFit()
                             
                             Text(questao.opcoes[1])
-                                .font(.custom("Brasilero2018Free-Regular", size: 22))
+                                .font(.custom("Brasilero2018Free-Regular", size: 24))
                                 .foregroundStyle(.black)
                                 .multilineTextAlignment(.center)
                             
                         }
                         .padding()
                         .frame(width:165, height: 140)
-                        .background(.amareloClaro)
+                        .background(corOpcao(opcao: questao.opcoes[1]))
                         .cornerRadius(12)
                     }
                 }
@@ -104,7 +119,13 @@ struct QuestaoView: View {
                 HStack{
                     
                     Button{
-                        proximo += 1
+                        opcaoSelecionada = questao.opcoes[2]//salva opcao clicada
+                        
+                        Task{
+                            try? await Task.sleep(nanoseconds: 2000000000)
+                            proximo += 1
+                            opcaoSelecionada = nil
+                        }
                     } label: {
                         VStack{
                             
@@ -117,15 +138,20 @@ struct QuestaoView: View {
                                 .foregroundStyle(.black)
                                 .multilineTextAlignment(.center)
                             
-                            
                         }
                         .padding()
                         .frame(width:165, height: 140)
-                        .background(.amareloClaro)
+                        .background(corOpcao(opcao: questao.opcoes[2]))
                         .cornerRadius(12)
                     }
                     Button{
-                        proximo += 1
+                        opcaoSelecionada = questao.opcoes[3]//salva opcao clicada
+                        
+                        Task{
+                            try? await Task.sleep(nanoseconds: 2000000000)
+                            proximo += 1
+                            opcaoSelecionada = nil
+                        }
                     } label: {
                         VStack{
                             
@@ -138,16 +164,33 @@ struct QuestaoView: View {
                                 .foregroundStyle(.black)
                                 .multilineTextAlignment(.center)
                             
-                            
                         }
                         .padding()
                         .frame(width:165, height: 140)
-                        .background(.amareloClaro)
+                        .background(corOpcao(opcao: questao.opcoes[3]))
                         .cornerRadius(12)
                     }
                 }
             }
         }
+        .onAppear(){
+            print("oi")
+        }
+    }
+    
+    func corOpcao( opcao: String)-> Color{
+        guard let selecionada = opcaoSelecionada else {
+            return .amareloClaro
+        }
+        if opcao == selecionada {
+            return opcao == questao.certa ? .verde : .vermelho
+        }
+        
+        if opcao == questao.certa {
+            return .green
+        }
+        
+        return .amareloClaro
     }
 }
 

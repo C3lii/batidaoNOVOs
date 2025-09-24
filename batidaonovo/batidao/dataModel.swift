@@ -29,7 +29,7 @@ extension Array where Element == Questoes{
             Questoes(
                 musica: "instrumental.funkbruxaria",
                 capaDoAlbum: "bruxaria",
-                certa: "sao manoel",
+                certa: "sao paulo",
                 estiloMusica: "Funk Bruxaria",
                 opcoes: ["sao paulo", "rio de janeiro", "minas gerais", "pernambuco"]
             ),
