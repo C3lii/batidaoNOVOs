@@ -8,7 +8,7 @@ import Foundation
 
 //prontinho olha, nussss
 
-struct Questoes: Identifiable {
+struct Questoes: Identifiable, Hashable {
     let id = UUID()
     
     let musica: String
@@ -23,6 +23,19 @@ struct Questoes: Identifiable {
     
 }
 extension Array where Element == Questoes{
+    static func questoesAleatorias(quantidade: Int) -> [Questoes] {
+        let todasAsQuestoes = Self.questoes()
+        
+        var sorteadas = Set<Questoes>()
+        
+        while sorteadas.count < quantidade {
+            let sorteada = todasAsQuestoes.randomElement()!
+            sorteadas.insert(sorteada)
+        }
+        
+        return Array(sorteadas)
+    }
+    
     static func questoes() -> [Questoes]{
         [
 
@@ -54,7 +67,7 @@ extension Array where Element == Questoes{
                 musica: "instrumental.forro",
                 capaDoAlbum: "forro",
                 certa: "ceara",
-                estiloMusica: "Forró/Baião",
+                estiloMusica: "Forro",
                 opcoes: ["ceara", "goias", "pernambuco", "para"]
             ),
             

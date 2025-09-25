@@ -11,7 +11,9 @@ import SwiftUI
 struct batidaoApp: App {
     var body: some Scene {
         WindowGroup {
-            QuizView()
+            NavigationStack{
+                InicialView()
+            }
         }
     }
 }

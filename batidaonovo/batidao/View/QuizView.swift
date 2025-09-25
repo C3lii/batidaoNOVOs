@@ -17,14 +17,31 @@ import SwiftUI
 
 struct QuizView: View {
     
-    @State var questoes: [Questoes] = .questoes()
+    @State var score: Int = 0
+    
+    @State var questoes: [Questoes] = .questoesAleatorias(quantidade: 5)
     
     @State var proximo: Int = 0
     
     var body: some View {
         VStack {
-            QuestaoView(questao: questoes[proximo%10],proximo: $proximo)
+            
+            if proximo < 5{
+                
+                QuestaoView(
+                    questao: questoes[proximo%10],
+                    proximo: $proximo,
+                    score: $score)
+                
                 .id(proximo)
+            } else {
+                
+                if score >= 3{
+                    FinalBomView(score: $score)
+                } else {
+                    FinalRuimView(score: $score)
+                }
+            }
         }
     }
 }

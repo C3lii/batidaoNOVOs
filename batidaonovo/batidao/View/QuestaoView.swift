@@ -22,6 +22,8 @@ struct QuestaoView: View {
     @State private var opcaoSelecionada: String? = nil // nil = nenhuma opção escolhida
     @State var questao: Questoes
     @Binding var proximo: Int
+    @Binding var score: Int
+    
     // random
     var body: some View {
         
@@ -61,6 +63,10 @@ struct QuestaoView: View {
                         
                         opcaoSelecionada = questao.opcoes[0]//salva opcao clicada
                         
+                        if questao.opcoes[0] == questao.certa{
+                            score += 1
+                        }
+                        
                         Task{
                             try? await Task.sleep(nanoseconds: 2000000000)
                             proximo += 1
@@ -95,6 +101,10 @@ struct QuestaoView: View {
                     Button{
                         opcaoSelecionada = questao.opcoes[1]//salva opcao clicada
                         
+                        if questao.opcoes[1] == questao.certa{
+                            score += 1
+                        }
+                        
                         Task{
                             try? await Task.sleep(nanoseconds: 2000000000)
                             proximo += 1
@@ -126,6 +136,10 @@ struct QuestaoView: View {
                     Button{
                         opcaoSelecionada = questao.opcoes[2]//salva opcao clicada
                         
+                        if questao.opcoes[2] == questao.certa{
+                            score += 1
+                        }
+                        
                         Task{
                             try? await Task.sleep(nanoseconds: 2000000000)
                             proximo += 1
@@ -152,10 +166,17 @@ struct QuestaoView: View {
                     Button{
                         opcaoSelecionada = questao.opcoes[3]//salva opcao clicada
                         
+                        if questao.opcoes[3] == questao.certa{
+                            score += 1
+                        }
+                        
+                        
                         Task{
                             try? await Task.sleep(nanoseconds: 2000000000)
                             proximo += 1
                             opcaoSelecionada = nil
+                            
+                            
                         }
                     } label: {
                         VStack{
