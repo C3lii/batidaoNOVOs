@@ -26,7 +26,7 @@ extension Array where Element == Questoes{
     static func questoesAleatorias(quantidade: Int) -> [Questoes] {
         let todasAsQuestoes = Self.questoes()
         
-        var sorteadas = Set<Questoes>()
+        var sorteadas = Set<Questoes>()//
         
         while sorteadas.count < quantidade {
             let sorteada = todasAsQuestoes.randomElement()!
@@ -81,7 +81,7 @@ extension Array where Element == Questoes{
             
             Questoes(
                 musica: "instrumental.boibumba",
-                capaDoAlbum: "boibuma",
+                capaDoAlbum: "boibumba",
                 certa: "amazonas",
                 estiloMusica: "Boi-Bumbá",
                 opcoes: ["amazonas", "para", "santa catarina", "minas gerais"]
