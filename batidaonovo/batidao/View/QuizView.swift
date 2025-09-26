@@ -19,17 +19,18 @@ struct QuizView: View {
     
     @State var score: Int = 0
     
-    @State var questoes: [Questoes] = .questoesAleatorias(quantidade: 5)
+//    @State var questoes: [Questoes] = .questoesAleatorias(quantidade: 5)
+    @State var questoes: [Questoes] = []
     
     @State var proximo: Int = 0
     
     var body: some View {
         VStack {
             
-            if proximo < 5{
+            if proximo < questoes.count{
                 
                 QuestaoView(
-                    questao: questoes[proximo%10],
+                    questao: questoes[proximo],
                     proximo: $proximo,
                     score: $score)
                 
@@ -42,6 +43,11 @@ struct QuizView: View {
                     FinalRuimView(score: $score)
                 }
             }
+        }
+        .onAppear {
+            questoes = .questoesAleatorias(quantidade: 5) // gera 5 questões novas
+            proximo = 0  // zera o índice da questão
+            score = 0    // zera o score
         }
     }
 }
