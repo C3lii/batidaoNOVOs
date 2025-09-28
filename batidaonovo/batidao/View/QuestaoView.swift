@@ -49,7 +49,9 @@ struct QuestaoView: View {
                             .frame(width: 231)
                         
                         ZStack{
-                            Circle()
+                           Image("disco")
+                                .resizable()
+                                .scaledToFit()
                                 .frame(width: 200)
                             
                             Image(questao.capaDoAlbum)
@@ -72,7 +74,7 @@ struct QuestaoView: View {
                                     let opcao = opcoesEmbaralhadas[index]
                                     Button {
                                         opcaoSelecionada = opcao
-                                        if opcao == questao.certa {
+                                        if opcao.lowercased() == questao.certa.lowercased() {
                                             score += 1
                                         }
                                         Task {
@@ -301,6 +303,7 @@ struct QuestaoView: View {
             do{
                 audioPlayer = try AVAudioPlayer(contentsOf: url)
                 audioPlayer?.play()
+                audioPlayer?.numberOfLoops = -1
             } catch {
                 print ("Erro ao tocar música \(name): \(error.localizedDescription)")
             }

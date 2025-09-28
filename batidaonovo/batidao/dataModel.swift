@@ -42,81 +42,81 @@ extension Array where Element == Questoes{
             Questoes(
                 musica: "instrumental.funkbruxaria",
                 capaDoAlbum: "bruxaria",
-                certa: "sao paulo",
+                certa: "São Paulo",
                 estiloMusica: "Funk Bruxaria",
-                opcoes: ["sao paulo", "rio de janeiro", "minas gerais", "pernambuco"]
+                opcoes: ["São Paulo", "Rio de Janeiro", "Minas Gerais", "Pernambuco"]
             ),
             
             Questoes(
                 musica: "instrumental.rockdoido",
                 capaDoAlbum: "rockdoido",
-                certa: "para",
+                certa: "Pará",
                 estiloMusica: "Rock Doido",
-                opcoes: ["para", "amazonas", "goias", "santa catarina"]
+                opcoes: ["Pará", "Amazonas", "Goiás", "Santa Catarina"]
             ),
             
             Questoes(
                 musica: "instrumental.150bpm",
                 capaDoAlbum: "150bpm",
-                certa: "rio de janeiro",
+                certa: "Rio de Janeiro",
                 estiloMusica: "Funk 150bpm",
-                opcoes: ["rio de janeiro", "sao paulo", "pernambuco", "ceara"]
+                opcoes: ["Rio de Janeiro", "São Paulo", "Pernambuco", "Ceará"]
             ),
             
             Questoes(
                 musica: "instrumental.forro",
                 capaDoAlbum: "forro",
-                certa: "ceara",
-                estiloMusica: "Forro",
-                opcoes: ["ceara", "goias", "pernambuco", "para"]
+                certa: "Ceará",
+                estiloMusica: "Forró",
+                opcoes: ["Ceará", "Goiás", "Pernambuco", "Pará"]
             ),
             
             Questoes(
                 musica: "instrumental.frevo",
                 capaDoAlbum: "frevo",
-                certa: "pernambuco",
+                certa: "Pernambuco",
                 estiloMusica: "Frevo",
-                opcoes: ["pernambuco", "minas gerais", "rio de janeiro", "para"]
+                opcoes: ["Pernambuco", "Minas Gerais", "Rio de Janeiro", "Pará"]
             ),
             
             Questoes(
                 musica: "instrumental.boibumba",
                 capaDoAlbum: "boibumba",
-                certa: "amazonas",
+                certa: "Amazonas",
                 estiloMusica: "Boi-Bumbá",
-                opcoes: ["amazonas", "para", "santa catarina", "minas gerais"]
+                opcoes: ["Amazonas", "Pará", "Santa Catarina", "Minas Gerais"]
             ),
             
             Questoes(
                 musica: "instrumental.gauchesco",
                 capaDoAlbum: "gauchesca",
-                certa: "rio grande do sul",
+                certa: "Rio Grande do Sul",
                 estiloMusica: "Música Gaúchesca",
-                opcoes: ["rio grande do sul", "santa catarina", "ceara", "goias"]
+                opcoes: ["Rio Grande do Sul", "Santa Catarina", "Ceará", "Goiás"]
             ),
             
             Questoes(
                 musica: "instrumental.megafunk",
                 capaDoAlbum: "megafunk",
-                certa: "santa catarina",
+                certa: "Santa Catarina",
                 estiloMusica: "Megafunk",
-                opcoes: ["santa catarina", "ceara", "rio grande do sul", "goias"]
+                opcoes: ["Santa Catarina", "Ceará", "Rio Grande do Sul", "Goiás"]
             ),
             
             Questoes(
                 musica: "instrumental.funkMTG",
                 capaDoAlbum: "funkMTG",
-                certa: "minas gerais",
+                certa: "Minas Gerais",
                 estiloMusica: "Funk MTG",
-                opcoes: ["minas gerais", "sao paulo", "rio de janeiro", "goias"]
+                opcoes: ["Minas Gerais", "São Paulo", "Rio de Janeiro", "Goiás"]
             ),
             
             Questoes(
                 musica: "instrumental.sertanejo",
                 capaDoAlbum: "sertanejo",
-                certa: "goias",
+                certa: "Goiás",
                 estiloMusica: "Sertanejo",
-                opcoes: ["goias", "ceara", "minas gerais", "rio grande do sul"]
+                opcoes: ["Goiás", "Ceará", "Minas Gerais", "Rio Grande do Sul"]
             )
         ]
     }

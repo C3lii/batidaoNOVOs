@@ -21,18 +21,40 @@ struct FinalBomView: View {
     @Binding var score: Int
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("final bom")
+        ZStack{
+            Color.amareloEscuro
+                .ignoresSafeArea()
             
-            Button("Reiniciar"){
-                score = 0
-                dismiss()
+            VStack(alignment: .leading, spacing: 100) {
+                
+                    Image("sabe tudo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 367)
+                
+                    
+                
+                Button(action: {
+                    score = 0
+                    dismiss()
+                }) {
+                    Text("Jogar de novo")
+                        .font(.custom("Brasilero2018Free-Regular", size: 32))
+                        .foregroundStyle(.white)
+                        .frame(width: 354, height: 84)
+                        .background(.azulEscuro)
+                        .cornerRadius(12)
+                        .multilineTextAlignment(.center)
+
+                    
+                }
+                .padding()
             }
-            
         }
-        .padding()
+    }
+}
+struct FinalBomView_Previews: PreviewProvider {
+    static var previews: some View {
+        FinalBomView(score: .constant(10))
     }
 }

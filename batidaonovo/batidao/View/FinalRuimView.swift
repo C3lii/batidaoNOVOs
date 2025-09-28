@@ -30,19 +30,50 @@ struct FinalRuimView: View {
     
     var body: some View {
         
-        
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("final ruim")
+        ZStack{
+            Color.amareloEscuro
+                .ignoresSafeArea()
             
-            Button("Reiniciar"){
-                score = 0
-                dismiss()
+            VStack{
+                HStack{
+                    Image("sabe nada")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 367)
+                    
+                    Spacer()
+                        .frame(width: 10)
+                }
+                
+                Spacer()
+                    .frame(height: 200)
             }
+            VStack(alignment: .leading) {
+                
+               Spacer()
+                    .frame(height: 470)
+                 
+                Button(action: {
+                    score = 0
+                    dismiss()
+                }) {
+                    Text("Jogar de novo")
+                        .font(.custom("Brasilero2018Free-Regular", size: 32))
+                        .foregroundStyle(.white)
+                        .frame(width: 354, height: 84)
+                        .background(.azulEscuro)
+                        .cornerRadius(12)
+                        .multilineTextAlignment(.center)
+
+                    
+                }
+            }
+            .padding()
         }
-        .padding()
     }
 }
-
+struct FinalRuimView_Previews: PreviewProvider {
+    static var previews: some View {
+        FinalRuimView(score: .constant(10))
+    }
+}

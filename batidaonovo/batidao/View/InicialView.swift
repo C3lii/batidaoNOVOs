@@ -14,26 +14,86 @@
 //
 
 import SwiftUI
+import AVFoundation
+
 
 struct InicialView: View {
+    
+    @State private var scale: Double = 1.8
+    @State private var audioPlayer: AVAudioPlayer?
+    
+    
     var body: some View {
-        VStack {
-            Text("Bem vindo ao quiz")
-                .font(.title)
+        
+        ZStack{
+            Color.white
+                .ignoresSafeArea()
             
-            NavigationLink(destination: QuizView()){
-                Text("Iniciar")
-                    .font(.headline)
-                    .padding()
-                    .background(.amareloClaro)
-                    .foregroundStyle(.black)
+            
+            VStack {
                 
+                ZStack{
+                    Image("paredao")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 400)
+                        .scaleEffect(scale)
+                        .onAppear{
+                            
+                            withAnimation(.linear(duration: 0.19).repeatForever(autoreverses: true)) {
+                                scale = 2.2
+                            }
+                        }
+                    
+                    Image("menina")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 330)
+                }
+                
+                Spacer()
+                    .frame(height: 20)
+                NavigationLink(destination: QuizView()){
+                    
+                    Text("iniciar")
+                        .font(.custom("Brasilero2018Free-Regular", size: 32))
+                        .foregroundStyle(.white)
+                        .frame(width: 330, height: 84)
+                        .background(.azulEscuro)
+                        .cornerRadius(12)
+                    
+                }
             }
-        }
-        .padding()
+            
+            .padding()
+            
+            .onAppear {
+                       tocaMusica(named: "inicial") // coloque "intro.mp3" no projeto
+                   }
+                   .onDisappear {
+                       paraMusica()
+                   }
+               }
     }
+    func tocaMusica(named name: String) {
+        if let url = Bundle.main.url(forResource: name, withExtension: "mp3") {
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: url)
+                audioPlayer?.numberOfLoops = -1
+                audioPlayer?.play()
+            } catch {
+                print("Erro ao tocar música \(name): \(error.localizedDescription)")
+            }
+        } else {
+            print("Arquivo de música não encontrado: \(name)")
+        }
+    }
+    
+    func paraMusica() {
+        audioPlayer?.stop()
+    }
+    
 }
-
 #Preview {
     InicialView()
 }
