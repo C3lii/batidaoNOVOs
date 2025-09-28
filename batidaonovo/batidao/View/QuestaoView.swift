@@ -88,9 +88,10 @@ struct QuestaoView: View {
                                                 .resizable()
                                                 .scaledToFit()
                                             Text(textoOpcao(opcao: opcao))
-                                                .font(.custom("Brasilero2018Free-Regular", size: 24))
+                                                .font(.custom("Brasilero2018Free-Regular", size: 20))
                                                 .foregroundStyle(textoCor(opcao: opcao))
                                                 .multilineTextAlignment(.center)
+                                                .lineLimit(2)
                                         }
                                         .padding()
                                         .frame(width:165, height: 140)
